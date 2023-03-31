@@ -1,0 +1,32 @@
+{
+  "name": "real-estate-backend",
+  "version": "1.0.0",
+  "description": "server side for real-estate-mis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:migrate": "sequelize-cli db:migrate",
+    "start": "npm run db:migrate && node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Byasi",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "brcypt": "^1.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.8.3",
+    "jsonwebtoken": "^9.0.0",
+    "nodemon": "^2.0.20",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.29.0"
+  },
+  "devDependencies": {
+    "install": "^0.13.0",
+    "npm": "^9.6.0",
+    "pg": "^8.9.0",
+    "sequelize-cli": "^6.6.0"
+  }
+}
