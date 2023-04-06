@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const userRoute = require('./routes/UserRoutes');
 const customerRoutes = require('./routes/CustomerRoutes');
-// router pages
+const propertyRoutes = require('./routes/PropertyRoutes');
+
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({extended:true}));
 // routes
 app.use('/api/v1/users',userRoute);
 app.use('/api/v1/customers',customerRoutes);
+app.use('/api/v1/property',propertyRoutes);
 
 const PORT = process.env.PORT || 5000;
 
