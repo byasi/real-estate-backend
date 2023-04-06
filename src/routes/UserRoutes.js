@@ -1,8 +1,9 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
 const UserControllers = require('../controllers/UserControllers');
+
 
 // all apis
 router.post('/addUser', UserControllers.registerUser);
@@ -14,3 +15,4 @@ router.get('/login/:token',UserControllers.getUserProfile);
 router.patch('/update/:id', UserControllers.updateUser);
 
 module.exports = router;
+

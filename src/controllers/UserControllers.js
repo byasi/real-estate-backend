@@ -154,6 +154,10 @@ class UserControllers {
             const token = req.params.token;
 
             if(token){
+                const data = jwt.verify(token, process.env.JWT_SECRETKEY);
+                return res.status(200).json({
+                    status: res.statusCode,
+                    data
                 const decodeToken = await jwt.verify(token, process.env.JWT_SECRETKEY);
                 return res.status(200).json({
                     status: res.statusCode,
