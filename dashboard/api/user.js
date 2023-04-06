@@ -1,13 +1,18 @@
-const userNav = document.getElementById("userNav");
-console.log(userNav);
+const { user, token} = localStorage;
 
-const userDetails = localStorage.getItem("user");
-const user = JSON.parse(userDetails);
-console.log(user);
+if(user === undefined && token === undefined ){
+	window.location.href = '/dashboard/login.html';
+} else {
+
+const userNav = document.getElementById("userNav");
+
+const loggedUser = JSON.parse(user);
 
 userNav.innerHTML = `
     <span class="user-icon">
 	    <img src="vendors/images/photo1.jpg" alt="">
 	</span>
-	<span class="user-name">${user.name}</span>
+	<span class="user-name">${loggedUser.name}</span>
 `;
+
+}
