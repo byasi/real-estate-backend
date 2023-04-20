@@ -248,50 +248,10 @@
 										<th class="datatable-nosort">Area</th>
 										<th>Price</th>
 										<th class="datatable-nosort">Location</th>
-										<th class="datatable-nosort">Action</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<td class="table-plus">Matuga Estates</td>
-										<td>OnSale</td>
-										<td>Building</td>
-										<td>4.4 arces</td>
-										<td>$162,100</td>
-										<td>Matuga</td>
-										<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-											</div>
-										</div>
-									</td>
-									</tr>
-									<tr>
-										<td class="table-plus">Bombo Land</td>
-										<td>Sold</td>
-										<td>Land</td>
-										<td>4.4 arces</td>
-										<td>$162,700</td>
-										<td>Bombo</td>
-										<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-											</div>
-										</div>
-									</td>
-									</tr>
+								<tbody id="tbody">
+								
 									
 									
 								</tbody>
@@ -314,6 +274,11 @@
 	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+
+	<!-- my apis -->
+	<!-- apis -->
+	<script src="api/user.js"></script>
+	<script src="api/FetchProperties.js"></script>
 	<!-- buttons for Export datatable -->
 	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
 	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
@@ -324,7 +289,6 @@
 	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
 	<!-- Datatable Setting js -->
 	<script src="vendors/scripts/datatable-setting.js"></script>
-	<!-- apis -->
-	<script src="api/user.js"></script>
+	
 </body>
 </html>
