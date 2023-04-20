@@ -16,7 +16,7 @@ class PropertyControllers {
             } else {
 
                 //add the property
-                const createdProperty = await PropertyServices.addProperty(propertyDetails);
+                const createdProperty = await PropertyServices.addProperty({...propertyDetails, balance: req.body.price});
                 return res.status(201).json({
                     status: res.statusCode,
                     message: 'Property created successfully',
