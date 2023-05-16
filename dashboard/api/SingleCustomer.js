@@ -1,5 +1,6 @@
 var sPageURL = window.location.search.substring(1);
 var sURLVariables = sPageURL.split("&");
+console.log(sURLVariables);
 for (var i = 0; i < sURLVariables.length; i++) {
     var sParameterName = sURLVariables[i].split("=");
     const id = sParameterName[1];
