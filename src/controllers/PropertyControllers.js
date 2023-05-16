@@ -21,6 +21,7 @@ class PropertyControllers {
         //add the property
         const createdProperty = await PropertyServices.addProperty({
           ...propertyDetails,
+          status: "OnSale",
           balance: req.body.price,
         });
         return res.status(201).json({

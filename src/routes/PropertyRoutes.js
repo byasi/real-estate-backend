@@ -1,10 +1,13 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
+const PropertyControllers = require("../controllers/PropertyControllers");
+const router = express.Router();
 
 const storage = multer.diskStorage({
   destination: "./uploads/properties",
   filename: (req, file, cb) => {
+    console.log("myFile", file);
     return cb(
       null,
       `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
@@ -34,10 +37,6 @@ function checkFileType(file, cb) {
     cb("Error: Please insert images only");
   }
 }
-
-const router = express.Router();
-
-const PropertyControllers = require("../controllers/PropertyControllers");
 
 // apis
 router.post(
