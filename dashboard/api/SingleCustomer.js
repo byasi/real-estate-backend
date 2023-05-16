@@ -1,20 +1,18 @@
 var sPageURL = window.location.search.substring(1);
 var sURLVariables = sPageURL.split("&");
-console.log(sURLVariables);
 for (var i = 0; i < sURLVariables.length; i++) {
-    var sParameterName = sURLVariables[i].split("=");
-    const id = sParameterName[1];
-    console.log('id', id);
+  var sParameterName = sURLVariables[i].split("=");
+  const id = sParameterName[1];
 
-    fetch(`http://localhost:5000/api/v1/customers/${id}`).then((response) => response.json())
+  fetch(`http://localhost:5000/api/v1/customers/${id}`)
+    .then((response) => response.json())
     .then((data) => {
-        const customer = data?.Data;
-        console.log('Customer', customer);
-        const name = document.getElementById('name');
-        const customerInfo = document.getElementById("information");
+      const customer = data?.Data;
+      const name = document.getElementById("name");
+      const customerInfo = document.getElementById("information");
 
-        name.innerText = `${customer.name}`
-        customerInfo.innerHTML = `
+      name.innerText = `${customer.name}`;
+      customerInfo.innerHTML = `
         <li>
                       <span>Email Address:</span>
                       ${customer.email}
@@ -35,6 +33,6 @@ for (var i = 0; i < sURLVariables.length; i++) {
                       <span>Date of Birth:</span>
                       ${customer.dateofbirth}
                     </li>
-        `
-    })
+        `;
+    });
 }
