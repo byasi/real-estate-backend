@@ -4,7 +4,10 @@ const PropertyServices = require('../services/PropertyServices');
 class PropertyControllers {
     static async registerProperty(req,res,next){
         try {
-            const propertyDetails = req.body;
+            const propertyDetails = {
+                image: `http://localhost:5000/uploads/properties/${req.file.filename}`,
+                ...req.body
+            };
 
             const propertyExists = await PropertyServices.findPropertyByName(req.body.name);
 
