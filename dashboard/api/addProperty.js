@@ -28,7 +28,6 @@ propertyForm.addEventListener("submit", (event) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       if (data.status === 201) {
         window.location.href = "/dashboard/properties.html";
         console.log(data.message);
