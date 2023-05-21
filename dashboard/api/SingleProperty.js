@@ -1,8 +1,9 @@
 var sPageURL = window.location.search.substring(1);
 var sURLVariables = sPageURL.split("&");
+let id;
 for (var i = 0; i < sURLVariables.length; i++) {
   var sParameterName = sURLVariables[i].split("=");
-  const id = sParameterName[1];
+  id = sParameterName[1];
 
   fetch(`http://localhost:5000/api/v1/property/${id}`)
     .then((response) => response.json())
@@ -51,15 +52,18 @@ for (var i = 0; i < sURLVariables.length; i++) {
       `;
     });
 }
-
+console.log(id);
 const displayOtherProperties = document.getElementById("otherProperties");
 
 fetch(`http://localhost:5000/api/v1/property`)
   .then((response) => response.json())
   .then((data) => {
     const properties = data.data;
-    displayOtherProperties.innerHTML = properties.map(
-      (property) => `
+
+    displayOtherProperties.innerHTML = properties
+      .filter((property) => property.id !== parseInt(id))
+      .map(
+        (property) => `
       <a href="/dashboard/singleProperty.html?singleproperty=${property.id}">
                     <li class="col-lg-3 col-md-3 col-sm-3" key=${property.id}>
                         <div class="product-box">
@@ -75,6 +79,6 @@ fetch(`http://localhost:5000/api/v1/property`)
                     </li>
                     </a>
     `
-    );
+      );
   });
 //
