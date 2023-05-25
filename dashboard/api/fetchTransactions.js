@@ -14,7 +14,16 @@ const response = fetch("http://localhost:5000/api/v1/transaction/")
           <td >${transaction.date}</td>
               <td>${transaction.mode}</td>
               <td>${transaction.Property.name}</td>
-              <td>${transaction.status}</td>
+              <td>
+              <span class="badge rounded-pill ${
+                transaction.status === "Pending"
+                  ? "badge-warning"
+                  : transactions.status === "Completed"
+                  ? "badge-success"
+                  : "badge-primary"
+              } 
+        } "
+        >${transaction.status}</span</td>
               <td>${transaction.amountpaid} </td>
               <td>${transaction.Property.balance} </td>
           </tr>

@@ -25,7 +25,10 @@ class TransactionServices {
 
   static async findAllCustomerTransactions(CustomerId) {
     try {
-      const transactions = await Transaction.findAll({ where: { CustomerId } });
+      const transactions = await Transaction.findAll({
+        where: { CustomerId },
+        include: Property,
+      });
       return transactions;
     } catch (error) {
       throw error;
