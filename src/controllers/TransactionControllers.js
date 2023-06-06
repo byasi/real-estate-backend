@@ -10,15 +10,17 @@ class TransactionControllers{
                 if(checkProperty){
                     const checkStatus =await checkProperty.status;
                     const balance = checkProperty.balance - req.body.amountpaid;
+                    const propertyStatus = "Sold";
+                    const transactionStatus = "Completed";
 
                     if(checkStatus !== "Sold"){
                         
                         const createTransaction = await TransactionServices.addTransaction(transactionDetails);
                         await TransactionServices.updateBalance(checkProperty.id, {balance:balance});
                     
-                        if(checkStatus.balance === 0){
-                            await TransactionServices.updatePropertyStatus(checkProperty.id,{status:"Sold"});
-                            await TransactionServices.updateTransactionStatus(createTransaction.id,{status:"Completed"});
+                        if(checkProperty.balance === 0){
+                            await TransactionServices.updatePropertyStatus(checkProperty.id, {status: propertyStatus});
+                            await TransactionServices.updateTransactionStatus(createTransaction.id, {status: transactionStatus});
 
                         return res.status(201).json({
                             status: res.statusCode,
@@ -52,7 +54,7 @@ class TransactionControllers{
             }else{
                 return res.status(409).json({
                     status: res.statusCode,
-                    message: 'Cystomer not found'
+                    message: 'Customer not found'
                 })
             }
         } catch (error) {
