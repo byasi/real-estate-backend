@@ -92,8 +92,13 @@
 
         <div class="user-info-dropdown">
           <div class="dropdown">
-            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" id="userNav">
-						
+            <a
+              class="dropdown-toggle"
+              href="#"
+              role="button"
+              data-toggle="dropdown"
+              id="userNav"
+            >
             </a>
             <div
               class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
@@ -319,12 +324,7 @@
                 ><span class="mtext">Manage Properties</span>
               </a>
             </li>
-            <li>
-              <a href="registration.html" class="dropdown-toggle no-arrow">
-                <span class="micon dw dw-folder-5"></span
-                ><span class="mtext">Registration</span>
-              </a>
-            </li>
+
             <li>
               <a href="transactions.html" class="dropdown-toggle no-arrow">
                 <span class="micon dw dw-money"></span
@@ -373,24 +373,20 @@
           </div>
           <!-- Property Form -->
           <div class="pd-20 card-box mb-30">
-            <form>
+            <form
+              id="uploadForm"
+              enctype="multipart/form-data"
+              method="POST"
+              action="http://localhost:5000/api/v1/property/addProperty"
+            >
               <div class="form-group">
                 <label>Property Name</label>
                 <input
                   class="form-control"
                   type="text"
+                  name="name"
                   placeholder="Property Name"
                   id="name"
-                />
-              </div>
-              <div class="form-group">
-                <label>Property Status</label>
-                <input
-                  class="form-control"
-                  value="OnSale"
-                  disabled
-                  type="text"
-                  id="status"
                 />
               </div>
               <div class="form-group">
@@ -399,6 +395,7 @@
                   class="form-control"
                   placeholder="Property Type"
                   type="text"
+                  name="type"
                   id="type"
                 />
               </div>
@@ -408,6 +405,7 @@
                   class="form-control"
                   placeholder="Property Area"
                   type="text"
+                  name="area"
                   id="area"
                 />
               </div>
@@ -417,16 +415,32 @@
                   class="form-control"
                   type="number"
                   placeholder="Property Price"
+                  name="price"
                   id="price"
                 />
               </div>
               <div class="form-group">
                 <label>Property Location</label>
-                <textarea class="form-control" placeholder="Property Location" id="location"
+                <textarea
+                  class="form-control"
+                  placeholder="Property Location"
+                  name="location"
+                  id="location"
                 ></textarea>
               </div>
+              <div class="form-group">
+                <label>Property Image</label>
+                <input
+                  class="form-control"
+                  name="image"
+                  type="file"
+                  id="image"
+                />
+              </div>
               <div class="form-group text-right">
-                <button class="btn btn-success" id="btn">Add Property</button>
+                <button type="submit" class="btn btn-success" id="btn">
+                  Add Property
+                </button>
               </div>
             </form>
           </div>
@@ -448,6 +462,6 @@
     <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 
     <script src="api/user.js"></script>
-    <script src="api/addProperty.js"></script>
+    <!-- <script src="api/addProperty.js"></script> -->
   </body>
 </html>

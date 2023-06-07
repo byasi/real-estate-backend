@@ -14,7 +14,9 @@ class TransactionServices {
 
   static async findAllTransactions() {
     try {
-      const transactions = await Transaction.findAll();
+      const transactions = await Transaction.findAll({
+        include: [Customer, Property],
+      });
       return transactions;
     } catch (error) {
       throw error;
@@ -23,7 +25,10 @@ class TransactionServices {
 
   static async findAllCustomerTransactions(CustomerId) {
     try {
-      const transactions = await Transaction.findAll({where: {CustomerId}});
+      const transactions = await Transaction.findAll({
+        where: { CustomerId },
+        include: Property,
+      });
       return transactions;
     } catch (error) {
       throw error;
@@ -59,57 +64,59 @@ class TransactionServices {
     }
   }
 
-  static async findCustomerById(id){
+  static async findCustomerById(id) {
     try {
-        const customer = await Customer.findOne({where:{id}});
-        return customer;
+      const customer = await Customer.findOne({ where: { id } });
+      return customer;
     } catch (error) {
-        throw error;
+      throw error;
     }
   }
 
-  static async findByPropertyById(id){
+  static async findByPropertyById(id) {
     try {
-        const property = await Property.findOne({where: {id}});
-        return property;
+      const property = await Property.findOne({ where: { id } });
+      return property;
     } catch (error) {
-        throw error;
+      throw error;
     }
   }
 
-  static async updateTransaction(id, updates){
+  static async updateTransaction(id, updates) {
     try {
-        const transactions = await Transaction.update(updates, {where: {id}});
-        return transactions;
+      const transactions = await Transaction.update(updates, { where: { id } });
+      return transactions;
     } catch (error) {
-        throw error;
+      throw error;
     }
   }
 
-  static async updatePropertyStatus(id, propertystatus){
+  static async updatePropertyStatus(id, propertystatus) {
     try {
         const status = await Property.update({where: {id}}, propertystatus);
     return status;
+
     } catch (error) {
-        throw error;
+      throw error;
     }
   }
 
-  static async updateTransactionStatus(id, transactionstatus){
+  static async updateTransactionStatus(id, transactionstatus) {
     try {
         const status = await Transaction.update( {where: {id}},transactionstatus);
         return status;
+
     } catch (error) {
-        throw error;
+      throw error;
     }
   }
 
-  static async updateBalance(id, balance){
+  static async updateBalance(id, balance) {
     try {
-        const property = await Property.update(balance, {where: {id}});
-        return property;
+      const property = await Property.update(balance, { where: { id } });
+      return property;
     } catch (error) {
-        throw error;
+      throw error;
     }
   }
 }
