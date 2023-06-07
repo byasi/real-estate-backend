@@ -93,8 +93,9 @@ class TransactionServices {
 
   static async updatePropertyStatus(id, propertystatus) {
     try {
-      const status = await Property.update(propertystatus, { where: { id } });
-      return status;
+        const status = await Property.update({where: {id}}, propertystatus);
+    return status;
+
     } catch (error) {
       throw error;
     }
@@ -102,10 +103,9 @@ class TransactionServices {
 
   static async updateTransactionStatus(id, transactionstatus) {
     try {
-      const status = await Transaction.update(transactionstatus, {
-        where: { id },
-      });
-      return status;
+        const status = await Transaction.update( {where: {id}},transactionstatus);
+        return status;
+
     } catch (error) {
       throw error;
     }
