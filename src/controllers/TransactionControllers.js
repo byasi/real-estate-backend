@@ -1,58 +1,36 @@
 const TransactionServices = require("../services/TransactionServices");
 
-class TransactionControllers{
-    static async createTransaction(req,res,next){
-        try {
-            const transactionDetails = req.body;
-            const checkCustomer = await TransactionServices.findCustomerById(req.body.CustomerId);
-            if(checkCustomer){
-                const checkProperty = await TransactionServices.findByPropertyById(req.body.PropertyId);
-                if(checkProperty){
-                    const checkStatus =await checkProperty.status;
-                    const balance = checkProperty.balance - req.body.amountpaid;
-                    const propertyStatus = "Sold";
-                    const transactionStatus = "Completed";
-
-                    if(checkStatus !== "Sold"){
-                        
-                        const createTransaction = await TransactionServices.addTransaction(transactionDetails);
-                        await TransactionServices.updateBalance(checkProperty.id, {balance:balance});
-                    
-                        if(checkProperty.balance === 0){
-                            await TransactionServices.updatePropertyStatus(checkProperty.id, {status: propertyStatus});
-                            await TransactionServices.updateTransactionStatus(createTransaction.id, {status: transactionStatus});
-
-                        }else{
-                            await TransactionServices.updatePropertyStatus(checkProperty.id,{status:"Pending"});
-                           
-                           return res.status(201).json({
-                            status: res.statusCode,
-                            message: `Transaction successfull, Your balance is ${balance}`,
-                            data: createTransaction
-                        })
-                        } 
-                    }else{
-                        return res.status(409).json({
-                            status: res.statusCode,
-                            message: 'Property SOLD or RENTED'
-                        })
-                    }
-                }else{
-                    return res.status(409).json({
-                        status: res.statusCode,
-                        message: 'Property not found'
-                    })
-                }
-            }else{
-                return res.status(409).json({
-                    status: res.statusCode,
-                    message: 'Customer not found'
-                })
-              return res.status(201).json({
-                status: res.statusCode,
-                message: "Transaction successfull Property sold",
-                data: createTransaction,
+class TransactionControllers {
+  static async createTransaction(req, res, next) {
+    try {
+      const transactionDetails = req.body;
+      const checkCustomer = await TransactionServices.findCustomerById(
+        req.body.CustomerId
+      );
+      if (checkCustomer) {
+        const checkProperty = await TransactionServices.findByPropertyById(
+          req.body.PropertyId
+        );
+        if (checkProperty) {
+          const checkStatus = await checkProperty.status;
+          const balance = checkProperty.balance - req.body.amountpaid;
+          const propertyStatus = "Sold";
+          const transactionStatus = "Completed";
+          if (checkStatus !== "Sold") {
+            const createTransaction = await TransactionServices.addTransaction(
+              transactionDetails
+            );
+            await TransactionServices.updateBalance(checkProperty.id, {
+              balance: balance,
+            });
+            if (checkProperty.balance === 0) {
+              await TransactionServices.updatePropertyStatus(checkProperty.id, {
+                status: propertyStatus,
               });
+              await TransactionServices.updateTransactionStatus(
+                createTransaction.id,
+                { status: transactionStatus }
+              );
             } else {
               await TransactionServices.updatePropertyStatus(checkProperty.id, {
                 status: "Pending",
@@ -79,7 +57,7 @@ class TransactionControllers{
       } else {
         return res.status(409).json({
           status: res.statusCode,
-          message: "Cystomer not found",
+          message: "Customer not found",
         });
       }
     } catch (error) {
