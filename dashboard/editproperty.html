@@ -3,7 +3,7 @@
   <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
-    <title>Real Estates | Dashboard</title>
+    <title>Real Estates | add Property</title>
 
     <!-- Site favicon -->
     <link
@@ -354,59 +354,111 @@
         <div class="min-height-200px">
           <div class="page-header">
             <div class="row">
-              <div class="col-md-12 col-sm-12">
+              <div class="col-md-6 col-sm-12">
                 <div class="title">
-                  <h4>Property Single</h4>
+                  <h4>Edit Property</h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <a href="./properties.html">Properties</a>
+                      <a href="properties.html">Properties</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Property Single
+                      Edit Property
                     </li>
                   </ol>
                 </nav>
               </div>
             </div>
           </div>
-          <div class="product-wrap">
-            <div class="product-detail-wrap mb-30">
-              <div class="row">
-                <div
-                  class="col-lg-6 col-md-12 col-sm-12"
-                  id="imageSection"
-                ></div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                  <div class="product-detail-desc pd-20 card-box height-100-p">
-                    <h4 class="mb-20 pt-20" id="proprtyName"></h4>
-                    <div class="profile-info">
-                      <ul class="list-group" id="information"></ul>
-                      
-                    </div>
-                  </div>
-                </div>
+          <!-- Property Form -->
+          <div class="pd-20 card-box mb-30">
+            <form id="uploadForm">
+              <div class="form-group">
+                <label>Property Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="name"
+                  placeholder="Property Name"
+                  id="name"
+                />
               </div>
-            </div>
-            <h4 class="mb-20">Other Properties</h4>
-            <div class="product-list">
-              <ul class="row" id="otherProperties"></ul>
-            
-            </div>
+              <div class="form-group">
+                <label>Property Type</label>
+                <input
+                  class="form-control"
+                  placeholder="Property Type"
+                  type="text"
+                  name="type"
+                  id="type"
+                />
+              </div>
+              <div class="form-group">
+                <label>Property Area</label>
+                <input
+                  class="form-control"
+                  placeholder="Property Area"
+                  type="text"
+                  name="area"
+                  id="area"
+                />
+              </div>
+              <div class="form-group">
+                <label>Property Price</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  placeholder="Property Price"
+                  name="price"
+                  id="price"
+                />
+              </div>
+              <div class="form-group">
+                <label>Property Location</label>
+                <textarea
+                  class="form-control"
+                  placeholder="Property Location"
+                  name="location"
+                  id="location"
+                ></textarea>
+              </div>
+              <!-- <div class="form-group">
+                <label>Property Image</label>
+                <input
+                  class="form-control"
+                  name="image"
+                  type="file"
+                  id="image"
+                />
+              </div> -->
+              <div class="form-group text-right">
+                <button type="submit" class="btn btn-success" id="btn">
+                  Edit Property
+                </button>
+              </div>
+            </form>
           </div>
+          <!-- End of Property Form -->
         </div>
-      </div>
-      <div class="footer-wrap pd-20 mb-20 card-box">
-        Real Estate Management System
+        <div class="footer-wrap pd-20 mb-20 card-box">
+          Real Estate Management System
+        </div>
       </div>
     </div>
     <!-- js -->
-    <script src="api/user.js"></script>
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>
     <script src="vendors/scripts/process.js"></script>
     <script src="vendors/scripts/layout-settings.js"></script>
-    <script src="api/SingleProperty.js"></script>
+    <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+
+    <script src="api/user.js"></script>
+    <script src="api/editProperty.js">
+      
+    </script>
   </body>
 </html>

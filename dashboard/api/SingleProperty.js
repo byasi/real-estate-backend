@@ -48,11 +48,13 @@ for (var i = 0; i < sURLVariables.length; i++) {
       Status
       <span class="">${property.status}</span>
     </li>
-      
+    <div class="actions mt-3">
+      <button class="btn btn-danger" id="delete">Delete Property</button>
+      <a href="editproperty.html?update=${property.id}" class="btn btn-info">Update Property</a>
+    </div>
       `;
     });
 }
-console.log(id);
 const displayOtherProperties = document.getElementById("otherProperties");
 
 fetch(`http://localhost:5000/api/v1/property`)
@@ -81,4 +83,12 @@ fetch(`http://localhost:5000/api/v1/property`)
     `
       );
   });
-//
+
+  // delete property
+  const deleteBtn = document.getElementById('delete');
+  deleteBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(('clicked'));
+  })
+
+
