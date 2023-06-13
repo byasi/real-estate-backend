@@ -23,18 +23,6 @@ const response = fetch("http://localhost:5000/api/v1/property")
                     >${property.location}</span
                   >
                   <span class="city d-block mb-3">${property.location}</span>
-
-                  <div class="specs d-flex mb-4">
-                    <span class="d-block d-flex align-items-center me-3">
-                      <span class="icon-bed me-2"></span>
-                      <span class="caption">2 beds</span>
-                    </span>
-                    <span class="d-block d-flex align-items-center">
-                      <span class="icon-bath me-2"></span>
-                      <span class="caption">2 baths</span>
-                    </span>
-                  </div>
-
                   <a
                     href="property-single.html"
                     class="btn btn-primary py-2 px-3"
