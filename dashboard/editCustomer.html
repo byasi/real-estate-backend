@@ -3,7 +3,7 @@
   <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
-    <title>Real Estates | Dashboard</title>
+    <title>Real Estates | Add Customers</title>
 
     <!-- Site favicon -->
     <link
@@ -324,13 +324,13 @@
                 ><span class="mtext">Manage Properties</span>
               </a>
             </li>
-
             <li>
-              <a href="transactions.html" class="dropdown-toggle no-arrow">
-                <span class="micon dw dw-money"></span
-                ><span class="mtext">Transactions</span>
+              <a href="registration.html" class="dropdown-toggle no-arrow">
+                <span class="micon dw dw-folder-5"></span
+                ><span class="mtext">Registration</span>
               </a>
             </li>
+
             <li>
               <a href="cancellation.html" class="dropdown-toggle no-arrow">
                 <span class="micon dw dw-cancel"></span
@@ -354,9 +354,9 @@
         <div class="min-height-200px">
           <div class="page-header">
             <div class="row">
-              <div class="col-md-12 col-sm-12">
+              <div class="col-md-6 col-sm-12">
                 <div class="title">
-                  <h4>Profile</h4>
+                  <h4>Add Customer</h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                   <ol class="breadcrumb">
@@ -364,228 +364,75 @@
                       <a href="customers.html">Customers</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Profile
+                      Edit Customer
                     </li>
                   </ol>
                 </nav>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
-              <div class="pd-20 card-box height-100-p">
-                <div class="profile-photo">
-                  <img
-                    src="vendors/images/photo1.jpg"
-                    alt=""
-                    class="avatar-photo"
-                  />
-                </div>
-                <h5 class="text-center h5 mb-0" id="name"></h5>
-                <div class="profile-info">
-                  <h5 class="mb-20 h5 text-blue">Contact Information</h5>
-                  <ul id="information"></ul>
-                  
-                </div>
+          <!-- customers Form -->
+          <div class="pd-20 card-box mb-30">
+            <form>
+              <div class="form-group">
+                <label>Customer Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Wanji Aziz"
+                  id="name"
+                />
               </div>
-            </div>
-            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 mb-30">
-              <div class="card-box height-100-p overflow-hidden">
-                <div class="profile-tab height-100-p">
-                  <div class="tab height-100-p">
-                    <ul class="nav nav-tabs customtab" role="tablist">
-                      <li class="nav-item">
-                        <a
-                          class="nav-link active"
-                          data-toggle="tab"
-                          href="#transactions"
-                          role="tab"
-                          >Transactions</a
-                        >
-                      </li>
-
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          data-toggle="tab"
-                          href="#setting"
-                          role="tab"
-                          >Settings</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="tab-content">
-                      <!-- Transactions tab start -->
-                      <div
-                        class="tab-pane fade height-100-p show active"
-                        id="transactions"
-                        role="tabpanel"
-                      >
-                        <div class="pd-20 card-box mb-30">
-                          <div class="table-responsive">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th scope="col">Date</th>
-                                  <th scope="col">Mode</th>
-                                  <th scope="col">AmountPaid</th>
-                                  <th scope="col">Balance</th>
-                                  <th scope="col">Property Bought</th>
-                                  <th scope="col">status</th>
-                                </tr>
-                              </thead>
-                              <tbody id="tbody"></tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End of Transactions tab -->
-
-                      <!-- Setting Tab start -->
-                      <div
-                        class="tab-pane fade height-100-p"
-                        id="setting"
-                        role="tabpanel"
-                      >
-                        <div class="profile-setting">
-                          <form>
-                            <ul class="profile-edit-list row">
-                              <li class="weight-500 col-md-6">
-                                <h4 class="text-blue h5 mb-20">
-                                  Edit Your Personal Setting
-                                </h4>
-                                <div class="form-group">
-                                  <label>Full Name</label>
-                                  <input
-                                    class="form-control form-control-lg"
-                                    type="text"
-                                  />
-                                </div>
-                                <div class="form-group">
-                                  <label>Title</label>
-                                  <input
-                                    class="form-control form-control-lg"
-                                    type="text"
-                                  />
-                                </div>
-                                <div class="form-group">
-                                  <label>Email</label>
-                                  <input
-                                    class="form-control form-control-lg"
-                                    type="email"
-                                  />
-                                </div>
-                                <div class="form-group">
-                                  <label>Date of birth</label>
-                                  <input
-                                    class="form-control form-control-lg date-picker"
-                                    type="text"
-                                  />
-                                </div>
-                                <div class="form-group">
-                                  <label>Gender</label>
-                                  <div class="d-flex">
-                                    <div
-                                      class="custom-control custom-radio mb-5 mr-20"
-                                    >
-                                      <input
-                                        type="radio"
-                                        id="customRadio4"
-                                        name="customRadio"
-                                        class="custom-control-input"
-                                      />
-                                      <label
-                                        class="custom-control-label weight-400"
-                                        for="customRadio4"
-                                        >Male</label
-                                      >
-                                    </div>
-                                    <div
-                                      class="custom-control custom-radio mb-5"
-                                    >
-                                      <input
-                                        type="radio"
-                                        id="customRadio5"
-                                        name="customRadio"
-                                        class="custom-control-input"
-                                      />
-                                      <label
-                                        class="custom-control-label weight-400"
-                                        for="customRadio5"
-                                        >Female</label
-                                      >
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <label>Country</label>
-                                  <select
-                                    class="selectpicker form-control form-control-lg"
-                                    data-style="btn-outline-secondary btn-lg"
-                                    title="Not Chosen"
-                                  >
-                                    <option>United States</option>
-                                    <option>India</option>
-                                    <option>United Kingdom</option>
-                                  </select>
-                                </div>
-                                <div class="form-group">
-                                  <label>State/Province/Region</label>
-                                  <input
-                                    class="form-control form-control-lg"
-                                    type="text"
-                                  />
-                                </div>
-                                <div class="form-group">
-                                  <label>Postal Code</label>
-                                  <input
-                                    class="form-control form-control-lg"
-                                    type="text"
-                                  />
-                                </div>
-                                <div class="form-group">
-                                  <label>Phone Number</label>
-                                  <input
-                                    class="form-control form-control-lg"
-                                    type="text"
-                                  />
-                                </div>
-                                <div class="form-group">
-                                  <label>Address</label>
-                                  <textarea class="form-control"></textarea>
-                                </div>
-                                <div class="form-group mb-0">
-                                  <input
-                                    type="submit"
-                                    class="btn btn-primary"
-                                    value="Update Information"
-                                  />
-                                </div>
-                              </li>
-                              <li class="weight-500 col-md-6">
-                                <h4 class="text-blue h5 mb-20">
-                                  Edit Social Media links
-                                </h4>
-                                <div class="form-group">
-                                  <label>Facebook URL:</label>
-                                  <input
-                                    class="form-control form-control-lg"
-                                    type="text"
-                                    placeholder="Paste your link here"
-                                  />
-                                </div>
-                              </li>
-                            </ul>
-                          </form>
-                        </div>
-                      </div>
-                      <!-- Setting Tab End -->
-                    </div>
-                  </div>
-                </div>
+              <div class="form-group">
+                <label>Customer Email Address</label>
+                <input
+                  class="form-control"
+                  placeholder="customer@example.com"
+                  type="email"
+                  id="email"
+                />
               </div>
-            </div>
+              <div class="form-group">
+                <label>Customer Contact</label>
+                <input
+                  class="form-control"
+                  placeholder="(+256)-111-1111"
+                  type="tel"
+                  id="contact"
+                />
+              </div>
+              <div class="form-group">
+                <label>Date of Birth</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  placeholder="Wanji Aziz"
+                  id="dob"
+                />
+              </div>
+              <div class="form-group">
+                <label>Customer Occupation</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="job title"
+                  id="occupation"
+                />
+              </div>
+              <div class="form-group">
+                <label>Customer Location</label>
+                <textarea
+                  class="form-control"
+                  placeholder="Customer Location"
+                  id="location"
+                ></textarea>
+              </div>
+              <div class="form-group text-right">
+                <button class="btn btn-success" id="btn">Edit Customer</button>
+              </div>
+            </form>
           </div>
+          <!-- End of Customers Form -->
         </div>
         <div class="footer-wrap pd-20 mb-20 card-box">
           Real Estate Management System
@@ -597,7 +444,11 @@
     <script src="vendors/scripts/script.min.js"></script>
     <script src="vendors/scripts/process.js"></script>
     <script src="vendors/scripts/layout-settings.js"></script>
+    <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
     <script src="api/user.js"></script>
-    <script src="api/SingleCustomer.js"></script>
+    <script src="api/editCustomer.js"></script>
   </body>
 </html>

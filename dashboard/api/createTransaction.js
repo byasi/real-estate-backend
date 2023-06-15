@@ -25,11 +25,13 @@ fetch("http://localhost:5000/api/v1/property/")
   .then((data) => {
     if (data.status === 200) {
       const properties = data.data;
+      console.log(properties);
       selectProperty.innerHTML = properties
         .filter((prop) => prop.status === "OnSale")
         .map(
           (property) => `
-        <option value=${property.id}>${property.name}</option>
+          <option defaultvalue="selectProperty">Select Property</option>
+          <option value=${property.id}>${property.name}</option>
       `
         );
     }

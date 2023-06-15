@@ -4,6 +4,21 @@ let id;
 for (var i = 0; i < sURLVariables.length; i++) {
   var sParameterName = sURLVariables[i].split("=");
   id = sParameterName[1];
+  const deleteProperty = () => {
+    fetch(`http://localhost:5000/api/v1/property/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.staus === 200) {
+          console.log(data);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   fetch(`http://localhost:5000/api/v1/property/${id}`)
     .then((response) => response.json())
@@ -53,6 +68,13 @@ for (var i = 0; i < sURLVariables.length; i++) {
       <a href="editproperty.html?update=${property.id}" class="btn btn-info">Update Property</a>
     </div>
       `;
+      // delete property
+      const deleteBtn = document.getElementById("delete");
+      deleteBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        deleteProperty();
+        window.location.href = `/dashboard/properties.html`;
+      });
     });
 }
 const displayOtherProperties = document.getElementById("otherProperties");
@@ -83,12 +105,3 @@ fetch(`http://localhost:5000/api/v1/property`)
     `
       );
   });
-
-  // delete property
-  const deleteBtn = document.getElementById('delete');
-  deleteBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log(('clicked'));
-  })
-
-

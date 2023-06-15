@@ -5,12 +5,13 @@ const response = fetch("http://localhost:5000/api/v1/transaction/")
   .then((data) => {
     if (data.status === 200) {
       const transactions = data.getTransactions;
+      console.log('trans',transactions);
       tbody.innerHTML = transactions
         .map(
           (transaction) =>
             `
           <tr key=${transaction.id}>
-          <td class="table-plus">${transaction.Customer.name}</td>
+          <td class="table-plus">${transaction.Customer?.name}</td>
           <td >${transaction.date}</td>
               <td>${transaction.mode}</td>
               <td>${transaction.Property.name}</td>
