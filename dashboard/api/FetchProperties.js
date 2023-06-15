@@ -15,7 +15,7 @@ const response = fetch("http://localhost:5000/api/v1/property")
             <td>${property.status}</td>
             <td>${property.type}</td>
             <td>${property.area}</td>
-            <td>${property.price}</td>
+            <td>${new Intl.NumberFormat('en-US',{style: 'currency', currency: 'UGX'}).format(property.price)}</td>
             <td>${property.location}</td>
         </tr>
           `

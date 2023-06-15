@@ -5,7 +5,6 @@ const response = fetch("http://localhost:5000/api/v1/transaction/")
   .then((data) => {
     if (data.status === 200) {
       const transactions = data.getTransactions;
-      console.log('trans',transactions);
       tbody.innerHTML = transactions
         .map(
           (transaction) =>
@@ -14,7 +13,7 @@ const response = fetch("http://localhost:5000/api/v1/transaction/")
           <td class="table-plus">${transaction.Customer?.name}</td>
           <td >${transaction.date}</td>
               <td>${transaction.mode}</td>
-              <td>${transaction.Property.name}</td>
+              <td>${transaction.Property?.name}</td>
               <td>
               <span class="badge rounded-pill ${
                 transaction.status === "Pending"
@@ -26,7 +25,7 @@ const response = fetch("http://localhost:5000/api/v1/transaction/")
         } "
         >${transaction.status}</span</td>
               <td>${transaction.amountpaid} </td>
-              <td>${transaction.Property.balance} </td>
+              <td>${transaction.Property?.balance} </td>
           </tr>
           
           `

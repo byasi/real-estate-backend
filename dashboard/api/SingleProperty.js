@@ -37,7 +37,7 @@ for (var i = 0; i < sURLVariables.length; i++) {
       class="list-group-item d-flex justify-content-between align-items-center"
     >
       Price
-      <span class="">${property.price}</span>
+      <span class="">${new Intl.NumberFormat('en-US',{style: 'currency', currency: 'UGX'}).format(property.price)}</span>
     </li>
     <li
       class="list-group-item d-flex justify-content-between align-items-center"

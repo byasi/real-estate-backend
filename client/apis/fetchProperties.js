@@ -17,14 +17,14 @@ const response = fetch("http://localhost:5000/api/v1/property")
               </a>
 
               <div class="property-content">
-                <div class="price mb-2"><span>UGX ${property.price}</span></div>
+                <div class="price mb-2"><span>${new Intl.NumberFormat('en-US',{style: 'currency', currency: 'UGX'}).format(property.price)}</span></div>
                 <div>
                   <span class="d-block mb-2 text-black-50"
-                    >${property.location}</span
+                    >Located at ${property.location}. Area of ${property.area} acres</span
                   >
-                  <span class="city d-block mb-3">${property.location}</span>
+                  <span class="city d-block mb-3">${property.name}</span>
                   <a
-                    href="property-single.html"
+                    href="property-single.html?singleproperty=${property.id}"
                     class="btn btn-primary py-2 px-3"
                     >See details</a
                   >
