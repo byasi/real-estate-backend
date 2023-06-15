@@ -4,6 +4,7 @@ const userRoute = require("./routes/UserRoutes");
 const customerRoutes = require("./routes/CustomerRoutes");
 const propertyRoutes = require("./routes/PropertyRoutes");
 const transactionRoutes = require("./routes/TransactionRoutes");
+const bookingRoutes = require('./routes/BookingRoutes');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use("/api/v1/users", userRoute);
 app.use("/api/v1/customers", customerRoutes);
 app.use("/api/v1/property", propertyRoutes);
 app.use("/api/v1/transaction", transactionRoutes);
+app.use('/api/v1/bookings', bookingRoutes);
 
 const PORT = process.env.PORT || 5000;
 
