@@ -60,19 +60,6 @@
     </script>
   </head>
   <body>
-    <div class="pre-loader">
-      <div class="pre-loader-box">
-        <div class="loader-logo">
-          <img src="vendors/images/deskapp-logo.svg" alt="" />
-        </div>
-        <div class="loader-progress" id="progress_div">
-          <div class="bar" id="bar1"></div>
-        </div>
-        <div class="percent" id="percent1">0%</div>
-        <div class="loading-text">Loading...</div>
-      </div>
-    </div>
-
     <div class="header">
       <div class="header-left">
         <div class="menu-icon dw dw-menu"></div>
@@ -98,8 +85,7 @@
               role="button"
               data-toggle="dropdown"
               id="userNav"
-            >
-            </a>
+            ></a>
             <div
               class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
             >
@@ -357,7 +343,7 @@
             <div class="row">
               <div class="col-md-6 col-sm-12">
                 <div class="title">
-                  <h4>blank</h4>
+                  <h4>Cancelled Transactions</h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                   <ol class="breadcrumb">
@@ -365,31 +351,36 @@
                       <a href="index.html">Home</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      blank
+                      Cancelled transactions
                     </li>
                   </ol>
                 </nav>
               </div>
-              <div class="col-md-6 col-sm-12 text-right">
-                <div class="dropdown">
-                  <a
-                    class="btn btn-primary dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-toggle="dropdown"
-                  >
-                    January 2023
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Export List</a>
-                    <a class="dropdown-item" href="#">Policies</a>
-                    <a class="dropdown-item" href="#">View Assets</a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
-          <div class="pd-20 bg-white border-radius-4 box-shadow mb-30"></div>
+          <div class="card-box mb-30">
+            <div class="pd-20">
+              <h4 class="text-blue h4">Cancelled Transactions</h4>
+            </div>
+            <div class="pb-20">
+              <table
+                class="table hover multiple-select-row data-table-export nowrap"
+              >
+                <thead>
+                  <tr>
+                    <th class="table-plus">Customer</th>
+                    <th class="datatable-nosort">Date</th>
+                    <th class="datatable-nosort">Mode</th>
+                    <th class="datatable-nosort">Property</th>
+                    <th class="datatable-nosort">status</th>
+                    <th class="datatable-nosort">Amount Paid</th>
+                    <th class="datatable-nosort">Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+          </div>
         </div>
         <div class="footer-wrap pd-20 mb-20 card-box">
           Real Estate Management System
@@ -397,11 +388,27 @@
       </div>
     </div>
     <!-- js -->
+    <script src="api/cancelledTransactions.js"></script>
+    <script src="api/user.js"></script>
+
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>
     <script src="vendors/scripts/process.js"></script>
     <script src="vendors/scripts/layout-settings.js"></script>
+    <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 
-    <script src="api/user.js"></script>
+    <!-- buttons for Export datatable -->
+    <script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+    <script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+    <script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+    <script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+    <script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+    <script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+    <script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+    <!-- Datatable Setting js -->
+    <script src="vendors/scripts/datatable-setting.js"></script>
   </body>
 </html>
