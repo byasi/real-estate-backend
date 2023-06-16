@@ -13,7 +13,7 @@ const response = fetch("http://localhost:5000/api/v1/property")
             `
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
             <div class="property-item">
-            <a href="property-single.html" class="img">
+            <a href="property-single.html?singleproperty=${property.id}" class="img">
               <img src=${property.image} alt="Image" class="img-fluid" />
             </a>
 
