@@ -10,7 +10,14 @@ const db = require('../database/models');
             throw error;
         }
     }
-    
+    static async findCustomerByContact (contact) {
+        try {
+            const customer = await Customer.findOne({where:{contact}});
+            return customer;
+        } catch (error) {
+            throw error;
+        }
+    }
     static async addCustomer(customerDetails){
         try {
             const addedcustomer = await Customer.create(customerDetails);

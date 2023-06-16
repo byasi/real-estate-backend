@@ -1,5 +1,5 @@
 const CustomerServices = require('../services/CustomerServices');
-
+const jwt = require("jsonwebtoken");
 
 class CustomerControllers {
     static async registerCustomer(req,res,next){
@@ -24,6 +24,57 @@ class CustomerControllers {
                 })
             }
 
+        } catch (error) {
+            return next(error);
+        }
+    }
+
+    static async login(req,res,next){
+        try {
+            // check username
+          const usernameExists = await CustomerServices.findCustomerByName(req.body.name);
+          if(usernameExists) {
+            // check contact
+            const contactExists = await CustomerServices.findCustomerByContact(req.body.contact);
+            if(contactExists){
+                const token = jwt.sign({name: usernameExists.name, id:usernameExists.id}, process.env.JWT_SECRETKEY, {expiresIn:"1hr",})
+                return res.status(200).json({
+                    status: res.statusCode,
+                    Message:"Login successful",
+                    token: token
+                })
+            } else {
+                return res.status(403).json({
+                    status: res.statusCode,
+                    message: 'Wrong details'
+                 })
+            }
+          } else {
+             return res.status(403).json({
+                status: res.statusCode,
+                message: 'Wrong details'
+             })
+          }
+        } catch (error) {
+            return next(error);
+        }
+    }
+    
+    static async getCustomerProfile (req, res, next) {
+        try {
+            const token = req.params.token;
+            if(token){
+                const data = jwt.verify(token, process.env.JWT_SECRETKEY);
+                return res.status(200).json({
+                    status: res.statusCode,
+                    data: data
+                })
+            }else{
+                return res.status(409).json({
+                    status: res.statusCode,
+                    Message: "Invalid token, Please login again"
+                })
+            }
         } catch (error) {
             return next(error);
         }
