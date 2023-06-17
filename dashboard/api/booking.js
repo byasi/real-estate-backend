@@ -49,6 +49,7 @@ const response = fetch("http://localhost:5000/api/v1/bookings")
             <tr>
                 <td class="table-plus">${booking.Customer?.name}</td>
                 <td>${booking.PropertyName}</td>
+                <td class="table-plus">${booking.Customer?.contact}</td>
                 <td><span class="badge badge-pill ${booking.status === 'Pending' ? 'badge-warning' : booking.status === 'Rejected'? 'badge-danger': 'badge-success'} ">${booking.status}</span></td>
                 <td>2023-10-06</td>
                 <td>
