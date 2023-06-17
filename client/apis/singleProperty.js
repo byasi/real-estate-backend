@@ -1,6 +1,4 @@
-let loggedCustomer;
-customer !== undefined ? loggedCustomer === customer : 'null' 
-//  = JSON.parse(customer);
+
 const errorDiv = document.getElementById('errors');
 var sPageURL = window.location.search.substring(1);
 var sURLVariables = sPageURL.split("&");
@@ -25,44 +23,48 @@ for (var i = 0; i < sURLVariables.length; i++) {
         { style: "currency", currency: "UGX" }
       ).format(property.price);
 
+      if(customer !== undefined){
       const bookBtn = document.getElementById("bookBtn");
-      const bookingDetails = {
-        CustomerId: loggedCustomer?.id,
-        PropertyName: property.name
-      };
-      bookBtn.addEventListener("click", async (event) => {
-        try {
-          event.preventDefault();
-         const response =  await fetch("http://localhost:5000/api/v1/bookings/create", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(bookingDetails),
-          });
-
-          const data = await response.json();
-          if(data.status === 201) {
+        const loggedCustomer = JSON.parse(customer);
+        const bookingDetails = {
+          CustomerId: loggedCustomer.id,
+          PropertyName: property.name
+        };
+        bookBtn.addEventListener("click", async (event) => {
+          try {
+            event.preventDefault();
+           const response =  await fetch("http://localhost:5000/api/v1/bookings/create", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(bookingDetails),
+            });
+  
+            const data = await response.json();
+            if(data.status === 201) {
+              errorDiv.innerHTML = `
+              <div class="alert alert-success" role="alert">
+              Booking successful
+            </div>
+              `
+            } else {
+              errorDiv.innerHTML = `
+              <div class="alert alert-danger" role="alert">
+                  Ooops!! ${data.data.message}
+                </div>
+              `
+            }
+            console.log(data);
+          } catch (error) {
             errorDiv.innerHTML = `
-            <div class="alert alert-success" role="alert">
-            Booking successful
-          </div>
-            `
-          } else {
-            errorDiv.innerHTML = `
-            <div class="alert alert-danger" role="alert">
-                Ooops!! Something went wrong, Failed to Book
-              </div>
-            `
+              <div class="alert alert-danger" role="alert">
+                  Ooops!! Something went wrong, Failed to Book
+                </div>`
+            console.error(error);
           }
-          console.log(data);
-        } catch (error) {
-          errorDiv.innerHTML = `
-            <div class="alert alert-danger" role="alert">
-                Ooops!! Something went wrong, Failed to Book
-              </div>`
-          console.error(error);
-        }
-      });
+        });
+      }
+      
     });
 }
