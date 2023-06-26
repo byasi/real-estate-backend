@@ -16,7 +16,7 @@ in your terminal run `cp .env.example .env` to copy content from `.env.example` 
 Then run `npm install` to all the packages <br>
 run `sequelize db:create` to create the database from the `.env`file you created. <br>
 then `sequelize db:migrate` to migrate or add tables to the database you have created <br>
-run `npm run dev` to start or run the server.
+run `[label](../../../Downloads/Documents/NTEGEMAJID-Ndu_wk_sem2_2019-letter.pdf) [label](../../../Downloads/Documents/NTEGEMAJID-BSCIT_NDU3_2019-letter.pdf) [label](../../../Downloads/Documents/NTEGEMAJID-BSCIT_NDU4_2020-letter.pdf)` to start or run the server.
 
 ## how to run Client Side
 
