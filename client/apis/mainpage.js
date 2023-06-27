@@ -7,11 +7,11 @@ const response = fetch("http://localhost:5000/api/v1/property")
     if (data.status === 200) {
       const properties = data.data;
       console.log(properties)
-      propertyArea.innerHTML = properties
+      propertyArea.innerHTML = properties.slice(0,4)
         .map(
           (property) =>
             `
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
             <div class="property-item">
             <a href="property-single.html?singleproperty=${property.id}" class="img">
               <img src=${property.image} alt="Image" class="img-fluid" />
