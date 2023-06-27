@@ -17,6 +17,7 @@ for (var i = 0; i < sURLVariables.length; i++) {
       document.getElementById("title").innerText = property.name;
       document.getElementById("bannerTitle").innerText = property.name;
       document.getElementById("breadcrumbTitle").innerText = property.name;
+      document.getElementById("description").innerText = property.description;
       document.getElementById("location").innerText = property.location;
       document.getElementById("price").innerText = new Intl.NumberFormat(
         "en-US",

@@ -15,6 +15,7 @@ for (var i = 0; i < sURLVariables.length; i++) {
       document.getElementById("area").value = property.area;
       document.getElementById("price").value = property.price;
       document.getElementById("location").value = property.location;
+      document.getElementById("description").value = property.description;
     });
 
   const updateBtn = document.getElementById("btn");
@@ -26,8 +27,9 @@ for (var i = 0; i < sURLVariables.length; i++) {
     const area = document.getElementById("area").value;
     const price = document.getElementById("price").value;
     const location = document.getElementById("location").value;
+    const description = document.getElementById("description").value;
 
-    const updateBody = { name, type, area, price, location };
+    const updateBody = { name, type, area, price, location, description };
     console.log(updateBody);
     fetch(`http://localhost:5000/api/v1/property/updateproperty/${id}`, {
       method: "PATCH",
