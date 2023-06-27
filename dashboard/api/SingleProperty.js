@@ -63,6 +63,12 @@ for (var i = 0; i < sURLVariables.length; i++) {
       Status
       <span class="">${property.status}</span>
     </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      Description
+      <span class="">${property.description}</span>
+    </li>
     <div class="actions mt-3">
       <button class="btn btn-danger" id="delete">Delete Property</button>
       <a href="editproperty.html?update=${property.id}" class="btn btn-info">Update Property</a>
