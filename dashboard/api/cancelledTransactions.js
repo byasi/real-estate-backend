@@ -20,7 +20,7 @@ const response = fetch("http://localhost:5000/api/v1/transaction/")
                   ? "badge-warning"
                   : transactions.status === "Completed"
                   ? "badge-success"
-                  : "badge-primary"
+                  : "badge-danger"
               } 
         } "
         >${transaction.status}</span</td>

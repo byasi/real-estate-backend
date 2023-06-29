@@ -14,6 +14,10 @@ const statuses = [
     name: "Completed",
     value: "Completed"
   },
+  {
+    name: "Cancelled",
+    value: "Cancelled"
+  },
 ];
 selectStatus.innerHTML = statuses
   .map(
@@ -46,7 +50,7 @@ function fetchTransactions() {
             (transaction) =>
               `
           <tr key=${transaction.id}>
-            <td class="table-plus">${transaction.Customer?.name}</td>
+            <td class="table-plus"><a href="/dashboard/singleTransaction.html?singletransaction=${transaction.id}">${transaction.Customer?.name}</a></td>
             <td>${transaction.date}</td>
             <td>${transaction.mode}</td>
             <td>${transaction.Property?.name}</td>
@@ -56,7 +60,7 @@ function fetchTransactions() {
                   ? "badge-warning"
                   : transaction.status === "Completed"
                   ? "badge-success"
-                  : "badge-primary"
+                  : "badge-danger"
               }">${transaction.status}</span>
             </td>
             <td>${transaction.amountpaid}</td>

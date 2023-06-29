@@ -5,7 +5,7 @@ const { Transaction, Customer, Property } = db;
 class TransactionServices {
   static async findTransactionById(id) {
     try {
-      const transaction = await Transaction.findOne({ where: { id } });
+      const transaction = await Transaction.findOne({ where: { id },  include: [Customer, Property] });
       return transaction;
     } catch (error) {
       throw error;
