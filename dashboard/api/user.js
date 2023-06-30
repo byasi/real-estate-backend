@@ -10,7 +10,7 @@ const loggedUser = JSON.parse(user);
 
 userNav.innerHTML = `
     <span class="user-icon">
-	    <img src="vendors/images/photo1.jpg" alt="">
+	    <img src="src/images/avatar.webp" alt="">
 	</span>
 	<span class="user-name">${loggedUser.name}</span>
 `;

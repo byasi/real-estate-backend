@@ -34,7 +34,7 @@ selectStatus.addEventListener("change", () => {
 });
 
 function fetchTransactions() {
-  const response = fetch("http://localhost:5000/api/v1/transaction/")
+   fetch("http://localhost:5000/api/v1/transaction/")
     .then((response) => response.json())
     .then((data) => {
       if (data.status === 200) {

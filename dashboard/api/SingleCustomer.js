@@ -29,7 +29,7 @@ for (var i = 0; i < sURLVariables.length; i++) {
       const name = document.getElementById("name");
       const customerInfo = document.getElementById("information");
 
-      name.innerText = `${customer.name}`;
+      name.innerText = `${customer.name.toUpperCase()}`;
       customerInfo.innerHTML = `
         <li>
                       <span>Email Address:</span>
