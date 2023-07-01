@@ -15,7 +15,6 @@ class TransactionControllers {
           const checkStatus = await checkProperty.status;
           const balance = checkProperty.balance - req.body.amountpaid;
           const propertyStatus = "Sold";
-          const transactionStatus = "Completed";
           if (checkStatus !== "Sold") {
             const createTransaction = await TransactionServices.addTransaction(
               transactionDetails
@@ -23,25 +22,25 @@ class TransactionControllers {
             await TransactionServices.updateBalance(checkProperty.id, {
               balance: balance,
             });
-            if (checkProperty.balance === 0) {
+            if (balance === 0) { // Check if the balance is zero
+              await TransactionServices.updateTransactionStatus(
+                createTransaction.id,
+                { status: "Completed" }
+              );
               await TransactionServices.updatePropertyStatus(checkProperty.id, {
                 status: propertyStatus,
               });
-              await TransactionServices.updateTransactionStatus(
-                createTransaction.id,
-                { status: transactionStatus }
-              );
             } else {
               await TransactionServices.updatePropertyStatus(checkProperty.id, {
                 status: "Pending",
               });
-
-              return res.status(201).json({
-                status: res.statusCode,
-                message: `Transaction successfull, Your balance is ${balance}`,
-                data: createTransaction,
-              });
             }
+  
+            return res.status(201).json({
+              status: res.statusCode,
+              message: `Transaction successful, Your balance is ${balance}`,
+              data: createTransaction,
+            });
           } else {
             return res.status(409).json({
               status: res.statusCode,
@@ -64,6 +63,7 @@ class TransactionControllers {
       return next(error);
     }
   }
+  
 
   static async getAllTransactions(req, res, next) {
     try {
