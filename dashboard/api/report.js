@@ -3,6 +3,7 @@ userName.innerText = JSON.parse(user).name;
 const tbody = document.getElementById("tbody");
 const toalProperies = document.getElementById("properties");
 let properties;
+let totalSales;
 
 const response = fetch("http://localhost:5000/api/v1/property")
   .then((response) => response.json())
@@ -10,6 +11,16 @@ const response = fetch("http://localhost:5000/api/v1/property")
     if (data.status === 200) {
       properties = data.data;
       toalProperies.innerText = properties.length || 0;
+      const soldProperties = properties.filter(
+        (prop) => prop.status === "Sold"
+      );
+      totalSales = soldProperties.reduce(
+        (total, prop) => total + prop.price,
+        0
+      );
+      console.log(totalSales);
+
+      document.getElementById("totalSales").innerText = new Intl.NumberFormat('en-US',{style: 'currency', currency: 'UGX'}).format(totalSales);
       tbody.innerHTML = properties
         .filter((prop) => prop.status === "OnSale")
         .map(
@@ -73,6 +84,3 @@ const responseTransactions = fetch("http://localhost:5000/api/v1/transaction/")
       ).length;
     }
   });
-
-const totalSales = document.getElementById("totalSales");
-totalSales.innerText = 0;
