@@ -9,7 +9,7 @@ const approve = (id) => {
         body: JSON.stringify({status: 'Approved'})
     }).then(res => res.json()).then((data) => {
         console.log(data)
-        window.location.reload();
+        fetchBookings();
     }).catch((error) => console.log(error))
 }
 const reject = (id) => {
@@ -21,7 +21,7 @@ const reject = (id) => {
         body: JSON.stringify({status: 'Rejected'})
     }).then(res => res.json()).then((data) => {
         console.log(data)
-        window.location.reload();
+        fetchBookings();
     }).catch((error) => console.log(error))
 }
 const reset = (id) => {
@@ -33,11 +33,22 @@ const reset = (id) => {
         body: JSON.stringify({status: 'Pending'})
     }).then(res => res.json()).then((data) => {
         console.log(data)
-        window.location.reload();
+        fetchBookings();
     }).catch((error) => console.log(error))
 }
+const deleteBooking = (id) => {
+    fetch(`http://localhost:5000/api/v1/bookings/${id}`, {
+        method: "DELETE"
+    }).then((res) => res.json()).then((data) => {
+        if(data){
+         fetchBookings();
+        }
+    }).catch((error) => console.log(error));
 
-const response = fetch("http://localhost:5000/api/v1/bookings")
+}
+
+const fetchBookings = () => {
+    const response = fetch("http://localhost:5000/api/v1/bookings")
   .then((response) => response.json())
   .then((data) => {
     if (data.status === 200) {
@@ -61,6 +72,7 @@ const response = fetch("http://localhost:5000/api/v1/bookings")
                             <button class="dropdown-item" id="approve" onclick="approve(${booking.id})">Approve</button>
                             <button class="dropdown-item" onclick="reject(${booking.id})" >Reject</button>
                             <button class="dropdown-item" onclick="reset(${booking.id})">Reset</button>
+                            ${booking.status === 'Rejected' ? (`<button class="dropdown-item" onclick="deleteBooking(${booking.id})">Delete</button>`): ''}
                         </div>
                     </div>
                  </td>
@@ -76,3 +88,6 @@ const response = fetch("http://localhost:5000/api/v1/bookings")
       tbody.innerHTML = ``;
     }
   });
+}
+fetchBookings();
+
